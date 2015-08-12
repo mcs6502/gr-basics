@@ -22,5 +22,5 @@
 ########################################################################
 install(FILES
     api.h
-    strobe.h DESTINATION include/basics
+    strobe_bb.h DESTINATION include/basics
 )

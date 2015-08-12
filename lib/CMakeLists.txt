@@ -26,7 +26,7 @@ include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIRS})
 
 list(APPEND basics_sources
-    strobe_impl.cc
+    strobe_bb_impl.cc
 )
 
 set(basics_sources "${basics_sources}" PARENT_SCOPE)
@@ -64,7 +64,7 @@ include_directories(${CPPUNIT_INCLUDE_DIRS})
 list(APPEND test_basics_sources
     ${CMAKE_CURRENT_SOURCE_DIR}/test_basics.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/qa_basics.cc
-    ${CMAKE_CURRENT_SOURCE_DIR}/qa_strobe.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/qa_strobe_bb.cc
 )
 
 add_executable(test-basics ${test_basics_sources})

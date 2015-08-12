@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <block>
-  <name>strobe</name>
-  <key>basics_strobe</key>
+  <name>strobe_bb</name>
+  <key>basics_strobe_bb</key>
   <category>basics</category>
   <import>import basics</import>
-  <make>basics.strobe()</make>
+  <make>basics.strobe_bb()</make>
   <!-- Make one 'param' node for every Parameter you want settable from the GUI.
        Sub-nodes:
        * name

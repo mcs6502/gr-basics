@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
 /* 
- * Copyright 2015 <+YOU OR YOUR COMPANY+>.
+ * Copyright 2015 Igor Mironov.
  * 
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,8 +19,8 @@
  */
 
 
-#ifndef _QA_STROBE_H_
-#define _QA_STROBE_H_
+#ifndef _QA_STROBE_BB_H_
+#define _QA_STROBE_BB_H_
 
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/TestCase.h>
@@ -28,10 +28,10 @@
 namespace gr {
   namespace basics {
 
-    class qa_strobe : public CppUnit::TestCase
+    class qa_strobe_bb : public CppUnit::TestCase
     {
     public:
-      CPPUNIT_TEST_SUITE(qa_strobe);
+      CPPUNIT_TEST_SUITE(qa_strobe_bb);
       CPPUNIT_TEST(t1);
       CPPUNIT_TEST_SUITE_END();
 
@@ -42,5 +42,5 @@ namespace gr {
   } /* namespace basics */
 } /* namespace gr */
 
-#endif /* _QA_STROBE_H_ */
+#endif /* _QA_STROBE_BB_H_ */
 

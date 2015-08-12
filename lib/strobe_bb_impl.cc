@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
 /* 
- * Copyright 2015 <+YOU OR YOUR COMPANY+>.
+ * Copyright 2015 Igor Mironov.
  * 
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,43 +23,43 @@
 #endif
 
 #include <gnuradio/io_signature.h>
-#include "strobe_impl.h"
+#include "strobe_bb_impl.h"
 
 namespace gr {
   namespace basics {
 
-    strobe::sptr
-    strobe::make()
+    strobe_bb::sptr
+    strobe_bb::make()
     {
       return gnuradio::get_initial_sptr
-        (new strobe_impl());
+        (new strobe_bb_impl());
     }
 
     /*
      * The private constructor
      */
-    strobe_impl::strobe_impl()
-      : gr::sync_decimator("strobe",
-              gr::io_signature::make(<+MIN_IN+>, <+MAX_IN+>, sizeof(<+ITYPE+>)),
-              gr::io_signature::make(<+MIN_OUT+>, <+MAX_OUT+>, sizeof(<+OTYPE+>)), <+decimation+>)
+    strobe_bb_impl::strobe_bb_impl()
+      : gr::block("strobe_bb",
+              gr::io_signature::make(1, 1, sizeof(unsigned char)),
+              gr::io_signature::make(1, 1, sizeof(unsigned char)))
     {}
 
     /*
      * Our virtual destructor.
      */
-    strobe_impl::~strobe_impl()
+    strobe_bb_impl::~strobe_bb_impl()
     {
     }
 
     int
-    strobe_impl::work(int noutput_items,
+    strobe_bb_impl::work(int noutput_items,
 			  gr_vector_const_void_star &input_items,
 			  gr_vector_void_star &output_items)
     {
-        const <+ITYPE+> *in = (const <+ITYPE+> *) input_items[0];
-        <+OTYPE+> *out = (<+OTYPE+> *) output_items[0];
+        const unsigned char *in = (const unsigned char *) input_items[0];
+        unsigned char *out = (unsigned char *) output_items[0];
 
-        // Do <+signal processing+>
+        // do the strobe function
 
         // Tell runtime system how many output items we produced.
         return noutput_items;

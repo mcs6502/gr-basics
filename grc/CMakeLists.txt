@@ -18,5 +18,5 @@
 # Boston, MA 02110-1301, USA.
 
 install(FILES
-    basics_strobe.xml DESTINATION share/gnuradio/grc/blocks
+    basics_strobe_bb.xml DESTINATION share/gnuradio/grc/blocks
 )

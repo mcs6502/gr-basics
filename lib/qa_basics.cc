@@ -26,13 +26,13 @@
  */
 
 #include "qa_basics.h"
-#include "qa_strobe.h"
+#include "qa_strobe_bb.h"
 
 CppUnit::TestSuite *
 qa_basics::suite()
 {
   CppUnit::TestSuite *s = new CppUnit::TestSuite("basics");
-  s->addTest(gr::basics::qa_strobe::suite());
+  s->addTest(gr::basics::qa_strobe_bb::suite());
 
   return s;
 }

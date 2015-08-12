@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
 /* 
- * Copyright 2015 <+YOU OR YOUR COMPANY+>.
+ * Copyright 2015 Igor Mironov.
  * 
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,31 +18,39 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_BASICS_STROBE_IMPL_H
-#define INCLUDED_BASICS_STROBE_IMPL_H
 
-#include <basics/strobe.h>
+#ifndef INCLUDED_BASICS_STROBE_BB_H
+#define INCLUDED_BASICS_STROBE_BB_H
+
+#include <basics/api.h>
+#include <gnuradio/block.h>
 
 namespace gr {
   namespace basics {
 
-    class strobe_impl : public strobe
+    /*!
+     * \brief If enabled, copies input to output; otherwise drops input.
+     * \ingroup basics
+     *
+     */
+    class BASICS_API strobe_bb : virtual public gr::block
     {
-     private:
-      // Nothing to declare in this block.
-
      public:
-      strobe_impl();
-      ~strobe_impl();
+      typedef boost::shared_ptr<strobe_bb> sptr;
 
-      // Where all the action really happens
-      int work(int noutput_items,
-	       gr_vector_const_void_star &input_items,
-	       gr_vector_void_star &output_items);
+      /*!
+       * \brief Return a shared_ptr to a new instance of basics::strobe_bb.
+       *
+       * To avoid accidental use of raw pointers, basics::strobe_bb's
+       * constructor is in a private implementation
+       * class. basics::strobe_bb::make is the public interface for
+       * creating new instances.
+       */
+      static sptr make();
     };
 
   } // namespace basics
 } // namespace gr
 
-#endif /* INCLUDED_BASICS_STROBE_IMPL_H */
+#endif /* INCLUDED_BASICS_STROBE_BB_H */
 

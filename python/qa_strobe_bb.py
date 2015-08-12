@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # 
-# Copyright 2015 <+YOU OR YOUR COMPANY+>.
+# Copyright 2015 Igor Mironov.
 # 
 # This is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ from gnuradio import gr, gr_unittest
 from gnuradio import blocks
 import basics_swig as basics
 
-class qa_strobe (gr_unittest.TestCase):
+class qa_strobe_bb (gr_unittest.TestCase):
 
     def setUp (self):
         self.tb = gr.top_block ()
@@ -38,4 +38,4 @@ class qa_strobe (gr_unittest.TestCase):
 
 
 if __name__ == '__main__':
-    gr_unittest.run(qa_strobe, "qa_strobe.xml")
+    gr_unittest.run(qa_strobe_bb, "qa_strobe_bb.xml")

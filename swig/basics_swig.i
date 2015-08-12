@@ -8,9 +8,9 @@
 %include "basics_swig_doc.i"
 
 %{
-#include "basics/strobe.h"
+#include "basics/strobe_bb.h"
 %}
 
 
-%include "basics/strobe.h"
-GR_SWIG_BLOCK_MAGIC2(basics, strobe);
+%include "basics/strobe_bb.h"
+GR_SWIG_BLOCK_MAGIC2(basics, strobe_bb);

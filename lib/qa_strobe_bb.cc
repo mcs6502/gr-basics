@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
 /* 
- * Copyright 2015 <+YOU OR YOUR COMPANY+>.
+ * Copyright 2015 Igor Mironov.
  * 
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,14 +21,14 @@
 
 #include <gnuradio/attributes.h>
 #include <cppunit/TestAssert.h>
-#include "qa_strobe.h"
-#include <basics/strobe.h>
+#include "qa_strobe_bb.h"
+#include <basics/strobe_bb.h>
 
 namespace gr {
   namespace basics {
 
     void
-    qa_strobe::t1()
+    qa_strobe_bb::t1()
     {
         // Put test here
     }
