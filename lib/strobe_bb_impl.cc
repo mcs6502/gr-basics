@@ -29,19 +29,21 @@ namespace gr {
   namespace basics {
 
     strobe_bb::sptr
-    strobe_bb::make()
+    strobe_bb::make(unsigned char level_min, unsigned char level_max)
     {
       return gnuradio::get_initial_sptr
-        (new strobe_bb_impl());
+        (new strobe_bb_impl(level_min, level_max));
     }
 
     /*
      * The private constructor
      */
-    strobe_bb_impl::strobe_bb_impl()
+    strobe_bb_impl::strobe_bb_impl(unsigned char level_min,
+        unsigned char level_max)
       : gr::block("strobe_bb",
-              gr::io_signature::make(1, 1, sizeof(unsigned char)),
-              gr::io_signature::make(1, 1, sizeof(unsigned char)))
+              gr::io_signature::make(2, 2, sizeof(unsigned char)),
+              gr::io_signature::make(1, 1, sizeof(unsigned char))),
+        d_level_min(level_min), d_level_max(level_max)
     {}
 
     /*
@@ -56,13 +58,27 @@ namespace gr {
 			  gr_vector_const_void_star &input_items,
 			  gr_vector_void_star &output_items)
     {
-        const unsigned char *in = (const unsigned char *) input_items[0];
-        unsigned char *out = (unsigned char *) output_items[0];
+        const unsigned char *in  = (const unsigned char *) input_items[0];
+        const unsigned char *clk = (const unsigned char *) input_items[1];
+        unsigned char *out       = (unsigned char *) output_items[0];
 
-        // do the strobe function
+        unsigned char level_min  = d_level_min;
+        unsigned char level_max  = d_level_max;
+
+        int j = 0;
+
+        for(int i = 0; i < noutput_items; ++i) {
+            unsigned char c = clk[i];
+            if (c >= level_min && c <= level_max) {
+                out[j] = in[i];
+                ++j;
+            }
+        }
+
+        consume_each(noutput_items - j);
 
         // Tell runtime system how many output items we produced.
-        return noutput_items;
+        return j;
     }
 
   } /* namespace basics */

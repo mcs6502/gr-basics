@@ -24,6 +24,7 @@
 #include "config.h"
 #endif
 
+#include <cppunit/CompilerOutputter.h>
 #include <cppunit/TextTestRunner.h>
 #include <cppunit/XmlOutputter.h>
 
@@ -37,10 +38,13 @@ main (int argc, char **argv)
 {
   CppUnit::TextTestRunner runner;
   std::ofstream xmlfile(get_unittest_path("basics.xml").c_str());
-  CppUnit::XmlOutputter *xmlout = new CppUnit::XmlOutputter(&runner.result(), xmlfile);
+  // CppUnit::XmlOutputter *out = new CppUnit::XmlOutputter(&runner.result(),
+  //   xmlfile);
+  CppUnit::CompilerOutputter *out = new CppUnit::CompilerOutputter(
+    &runner.result(), std::cout);
 
   runner.addTest(qa_basics::suite());
-  runner.setOutputter(xmlout);
+  runner.setOutputter(out);
 
   bool was_successful = runner.run("", false);
 

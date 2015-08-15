@@ -28,17 +28,24 @@ namespace gr {
 
     class strobe_bb_impl : public strobe_bb
     {
+      friend sptr strobe_bb::make(unsigned char level_min,
+                                  unsigned char level_max);
+
      private:
-      // Nothing to declare in this block.
+      strobe_bb_impl(unsigned char level_min,
+                     unsigned char level_max);
 
      public:
-      strobe_bb_impl();
       ~strobe_bb_impl();
 
       // Where all the action really happens
       int work(int noutput_items,
 	       gr_vector_const_void_star &input_items,
 	       gr_vector_void_star &output_items);
+
+     private:
+      unsigned char d_level_min;
+      unsigned char d_level_max;
     };
 
   } // namespace basics

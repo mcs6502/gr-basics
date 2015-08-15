@@ -45,8 +45,14 @@ namespace gr {
        * constructor is in a private implementation
        * class. basics::strobe_bb::make is the public interface for
        * creating new instances.
+       *
+       * \param level_min The minimum level of clock that will trigger the
+       *                  strobe (example: 1).
+       *
+       * \param level_max The maximum level of clock required to trigger the
+       *                  strobe (example: 255).
        */
-      static sptr make();
+      static sptr make(unsigned char level_min, unsigned char level_max);
     };
 
   } // namespace basics
