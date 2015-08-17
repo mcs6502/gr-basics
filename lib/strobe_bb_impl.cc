@@ -54,9 +54,10 @@ namespace gr {
     }
 
     int
-    strobe_bb_impl::work(int noutput_items,
-			  gr_vector_const_void_star &input_items,
-			  gr_vector_void_star &output_items)
+    strobe_bb_impl::general_work (int noutput_items,
+                                  gr_vector_int &ninput_items,
+                                  gr_vector_const_void_star &input_items,
+                                  gr_vector_void_star &output_items)
     {
         const unsigned char *in  = (const unsigned char *) input_items[0];
         const unsigned char *clk = (const unsigned char *) input_items[1];
@@ -65,9 +66,12 @@ namespace gr {
         unsigned char level_min  = d_level_min;
         unsigned char level_max  = d_level_max;
 
+        int n = std::min(noutput_items,
+                         std::min(ninput_items[0],
+                                  ninput_items[1]));
         int j = 0;
 
-        for(int i = 0; i < noutput_items; ++i) {
+        for(int i = 0; i < n; ++i) {
             unsigned char c = clk[i];
             if (c >= level_min && c <= level_max) {
                 out[j] = in[i];
@@ -75,7 +79,7 @@ namespace gr {
             }
         }
 
-        consume_each(noutput_items - j);
+        consume_each(n);
 
         // Tell runtime system how many output items we produced.
         return j;

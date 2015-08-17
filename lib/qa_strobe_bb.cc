@@ -75,7 +75,7 @@ namespace gr {
         tb->connect(src, 0, blk, 0);
         tb->connect(clk, 0, blk, 1);
         tb->connect(blk, 0, dst, 0);
-        tb->start();
+        tb->run();
 
         std::vector<unsigned char> expected_data(output, output + output_len);
         print_vector(expected_data);

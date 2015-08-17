@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<block>
+  <name>Strobe</name>
+  <key>basics_strobe_bb</key>
+  <category>Stream Operators</category>
+  <import>import basics</import>
+  <make>basics.strobe_bb($level_min, $level_max)</make>
+
+  <param>
+    <name>Min Level</name>
+    <key>level_min</key>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Max Level</name>
+    <key>level_max</key>
+    <type>int</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+
+  <sink>
+    <name>clk</name>
+    <type>byte</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>byte</type>
+  </source>
+
+  <doc>This block propagates input to output only when the clock level
+       is within specified limits (clk &gt;= lmin &amp;&amp; clk &lt;=
+       lmax). It is like a D latch with an extra feature: it decimates
+       (or cuts out) those periods when the clock level is zero.
+       It can also be considered a Puncture block with a continuous
+       matrix parameter.</doc>
+</block>
